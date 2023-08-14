@@ -7,11 +7,21 @@
 </head>
 <body>
     <script>
+        function copyToClipboard(text) {
+            var dummy = document.createElement("textarea");
+            document.body.appendChild(dummy);
+            dummy.value = text;
+            dummy.select();
+            document.execCommand("copy");
+            document.body.removeChild(dummy);
+            alert(text + " copiado al portapapeles!");
+        }
+
         var password = prompt("Introduce la contraseña para acceder:");
 
         if (password === "1234qwertY") {
-            document.write('<a href="www.peliculas.com">Peliculas</a><br>');
-            document.write('<a href="www.series.com">Series</a>');
+            document.write('<button onclick="copyToClipboard(\'www.peliculas.com\')">Peliculas</button><br>');
+            document.write('<button onclick="copyToClipboard(\'www.series.com\')">Series</button>');
         } else {
             document.write('Contraseña incorrecta.');
         }
