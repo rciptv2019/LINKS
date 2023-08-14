@@ -21,24 +21,21 @@
             margin: 10px;
             border: 1px solid #ddd;
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Centrar contenido horizontalmente */
         }
 
         .column h2 {
             text-align: center;
-            margin-bottom: 20px; /* Espacio debajo del título */
         }
 
-        .btn-container {
+        .button-section {
             display: flex;
-            align-items: center; /* Alinear el botón y el texto verticalmente */
-            margin-bottom: 10px; /* Espacio entre botones */
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
         }
 
-        .btn-info {
-            margin-left: 10px; /* Espacio a la izquierda del texto "info del botón" */
+        .info {
+            margin-left: 15px;
         }
     </style>
 </head>
@@ -63,16 +60,16 @@
         <div class="columns">
             <div class="column">
                 <h2>Uno</h2>
-                <div class="btn-container">
+                <div class="button-section">
                     <button onclick="copyToClipboard('www.peliculas.com')">Peliculas</button>
-                    <span class="btn-info">info del botón</span>
+                    <span class="info">info del botón</span>
                 </div>
             </div>
             <div class="column">
                 <h2>Dos</h2>
-                <div class="btn-container">
+                <div class="button-section">
                     <button onclick="copyToClipboard('www.series.com')">Series</button>
-                    <span class="btn-info">info del botón</span>
+                    <span class="info">info del botón</span>
                 </div>
             </div>
         </div>`;
