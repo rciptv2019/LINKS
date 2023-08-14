@@ -5,11 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acceso protegido</title>
     <style>
-        /* Esto es solo para darle un aspecto más agradable a los botones */
+        /* Estilos base para botones */
         button {
             padding: 10px 20px;
             margin: 5px;
             cursor: pointer;
+        }
+
+        /* Estilo para el contenedor de las columnas */
+        .columns {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Estilo individual para cada columna */
+        .column {
+            width: 48%; /* Aproximadamente la mitad del ancho, dejando un pequeño espacio en el medio */
+            box-sizing: border-box;
+            padding: 20px;
+            border: 1px solid #ddd;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .column h2 {
+            text-align: center;
+            margin-top: 0;
         }
     </style>
 </head>
@@ -28,8 +48,17 @@
         var password = prompt("Introduce la contraseña para acceder:");
 
         if (password === "1234qwertY") {
-            document.write('<button onclick="copyToClipboard(\'www.peliculas.com\')">Peliculas</button><br>');
+            document.write('<div class="columns">');
+            document.write('<div class="column">');
+            document.write('<h2>Uno</h2>');
+            document.write('<button onclick="copyToClipboard(\'www.peliculas.com\')">Peliculas</button>');
+            document.write('</div>'); // Cierre de la columna Uno
+
+            document.write('<div class="column">');
+            document.write('<h2>Dos</h2>');
             document.write('<button onclick="copyToClipboard(\'www.series.com\')">Series</button>');
+            document.write('</div>'); // Cierre de la columna Dos
+            document.write('</div>'); // Cierre del contenedor de columnas
         } else {
             document.write('Contraseña incorrecta.');
         }
