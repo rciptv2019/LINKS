@@ -5,63 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acceso protegido</title>
     <style>
-        /* Estilos base para botones */
         button {
             padding: 10px 20px;
             margin: 5px;
             cursor: pointer;
         }
 
-        /* Estilo para el contenedor de las columnas */
         .columns {
             display: flex;
             justify-content: space-between;
         }
 
-        /* Estilo individual para cada columna */
         .column {
-            width: 48%; /* Aproximadamente la mitad del ancho, dejando un pequeño espacio en el medio */
-            box-sizing: border-box;
+            flex: 1;
             padding: 20px;
+            margin: 10px;
             border: 1px solid #ddd;
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .column h2 {
             text-align: center;
-            margin-top: 0;
         }
     </style>
 </head>
 <body>
-    <script>
-        function copyToClipboard(text) {
-            var dummy = document.createElement("textarea");
-            document.body.appendChild(dummy);
-            dummy.value = text;
-            dummy.select();
-            document.execCommand("copy");
-            document.body.removeChild(dummy);
-            alert(text + " copiado al portapapeles!");
-        }
+<div id="content"></div>
+<script>
+    function copyToClipboard(text) {
+        var dummy = document.createElement("textarea");
+        document.body.appendChild(dummy);
+        dummy.value = text;
+        dummy.select();
+        document.execCommand("copy");
+        document.body.removeChild(dummy);
+        alert(text + " copiado al portapapeles!");
+    }
 
-        var password = prompt("Introduce la contraseña para acceder:");
+    var password = prompt("Introduce la contraseña para acceder:");
+    var contentDiv = document.getElementById("content");
 
-        if (password === "1234qwertY") {
-            document.write('<div class="columns">');
-            document.write('<div class="column">');
-            document.write('<h2>Uno</h2>');
-            document.write('<button onclick="copyToClipboard(\'www.peliculas.com\')">Peliculas</button>');
-            document.write('</div>'); // Cierre de la columna Uno
-
-            document.write('<div class="column">');
-            document.write('<h2>Dos</h2>');
-            document.write('<button onclick="copyToClipboard(\'www.series.com\')">Series</button>');
-            document.write('</div>'); // Cierre de la columna Dos
-            document.write('</div>'); // Cierre del contenedor de columnas
-        } else {
-            document.write('Contraseña incorrecta.');
-        }
-    </script>
+    if (password === "1234qwertY") {
+        contentDiv.innerHTML = `
+        <div class="columns">
+            <div class="column">
+                <h2>Uno</h2>
+                <button onclick="copyToClipboard('www.peliculas.com')">Peliculas</button>
+            </div>
+            <div class="column">
+                <h2>Dos</h2>
+                <button onclick="copyToClipboard('www.series.com')">Series</button>
+            </div>
+        </div>`;
+    } else {
+        contentDiv.innerHTML = 'Contraseña incorrecta.';
+    }
+</script>
 </body>
 </html>
