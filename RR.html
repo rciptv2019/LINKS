@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso protegido</title>
+    <style>
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    
+        .columns {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap; 
+        }
+    
+        .column {
+            flex: 1;
+            padding: 20px;
+            margin: 10px;
+            border: 1px solid #ddd;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    
+        .column h2 {
+            text-align: center;
+        }
+    
+        .button-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+        }
+    
+        .info {
+            flex: 1; 
+            text-align: right; 
+            margin-left: 15px;
+        }
+    
+        button {
+            flex: 1; 
+        }
+    
+        @media (max-width: 768px) {
+            .columns {
+                flex-direction: column;
+            }
+    
+            .column {
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="content"></div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            function copyToClipboard(text) {
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(text).then(function() {
+                        alert(text + " copiado al portapapeles!");
+                    }).catch(function(err) {
+                        console.error('No se pudo copiar el texto al portapapeles: ', err);
+                    });
+                } else {
+                    var dummy = document.createElement("textarea");
+                    document.body.appendChild(dummy);
+                    dummy.value = text;
+                    dummy.select();
+                    try {
+                        if (document.execCommand("copy")) {
+                            alert(text + " copiado al portapapeles!");
+                        } else {
+                            console.error('No se pudo copiar el texto al portapapeles');
+                        }
+                    } catch (err) {
+                        console.error('No se pudo copiar el texto al portapapeles', err);
+                    }
+                    document.body.removeChild(dummy);
+                }
+            }
+
+            function getRealContent() {
+                var moonlight1 = "luna234amber";
+                var moonlight2 = "solstice781";
+                var moonlight3 = "starlight369";
+                var moonlight4 = "eclipse415";
+                var moonlight5 = "galaxy890";
+
+                var password = prompt("Introduce la contraseña para acceder:");
+                var contentDiv = document.getElementById("content");
+
+                if ([moonlight1, moonlight2, moonlight3, moonlight4, moonlight5].includes(password)) {
+                    contentDiv.innerHTML = 'Contraseña incorrecta.';
+                } else if (password === "1234qwertY") {
+                    contentDiv.innerHTML = `
+                    <div class="columns">
+                        <div class="column">
+                            <h2>Deportes</h2>
+                            <div class="button-section">
+                                <button class="copy-btn" data-url="https://www.dropbox.com/scl/fi/8z47a1o6zxrg1q36ato4h/Lista-acestream.m3u?rlkey=d5thmpusf4idl2x9rpavk0lmj&raw=1">Ramses</button>
+                                <span class="info">Lista AceStream Ramses</span>
+                            </div>
+                            <div class="button-section">
+                                <button class="copy-btn" data-url="https://www.dropbox.com/scl/fi/vhpziuy5q63kmmm7vc9a3/lista1.m3u?rlkey=9t0w0w9k7o54r2ui3rvqln1o4&raw=1">Electroperra</button>
+                                <span class="info">Lista AceStream Electroperra</span>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <h2>TV</h2>
+                            <div class="button-section">
+                                <button class="copy-btn" data-url="https://www.dropbox.com/scl/fi/12j6kcx5skq4thyfeek9o/RCMama.m3u8?rlkey=xelzn3pr47xtuj6h9ulb34vje&raw=1">RCiptvMMM</button>
+                                <span class="info">Lista Mama</span>
+                            </div>
+                            <div class="button-section">
+                                <button class="copy-btn" data-url="https://www.dropbox.com/scl/fi/y6gdn00nie77meytl9l4r/RCiptvRC.m3u8?rlkey=cxtpl92flpnlw0sk49rtzls8j&raw=1">RCiptvRC</button>
+                                <span class="info">Lista RC</span>
+                            </div>
+                            <div class="button-section">
+                                <button class="copy-btn" data-url="https://www.dropbox.com/scl/fi/23qx40pplj2xf21et4pb2/RCMama.w3u?rlkey=25d7q56ecqub4kr676vzod1t7&raw=1">RCiptvMMM (WISE)</button>
+                                <span class="info">Lista Mama</span>
+                            </div>
+                            <div class="button-section">
+                                <button class="copy-btn" data-url="https://www.dropbox.com/scl/fi/s4s88jxvmg1t4iyql7rdi/RCiptvRC.w3u?rlkey=sa4yp6j95dkdb3rzpisefjinl&raw=1">RCiptvRC(WISE)</button>
+                                <span class="info">Lista RC</span>
+                            </div>
+                            <div class="button-section">
+                                <button class="copy-btn" data-url="https://www.dropbox.com/scl/fi/i9cjjsbk24w7kvhbi9o9x/rcpeliculas.w3u?rlkey=vtqeph472qa550i887dk8du19&raw=1">Lista Pelis AceStream</button>
+                                <span class="info">Lista Peliculas AceStream</span>
+                            </div>
+                            <div class="button-section">
+                                <button class="copy-btn" data-url="http://nfnt.ddns.net:8080/get.php?username=Ash2&password=BMbu2xSrmb8M&type=m3u_plus&output=ts">IPTV nfnt</button>
+                                <span class="info">IPTV nfnt</span>
+                            </div>                            
+                        </div>
+                        <div class="column">
+                            <h2>Listas Wiseplay</h2>
+                            <div class="button-section">
+                                <button class="copy-btn" data-url="https://www.dropbox.com/scl/fi/ea1shi6973am4ja0z270g/270823.w3u?rlkey=y39gaurblfn5rujknktnkycjn&raw=1">Eventos diarios LaTeta</button>
+                                <span class="info">Lista Eventos LaTeta</span>
+                            </div>
+                            <div class="button-section">
+                                <button class="copy-btn" data-url="https://www.dropbox.com/scl/fi/4756ka7fzojrwrdr7v13h/RCdiarios.w3u?rlkey=18qq8d5cls24uyzc9va9gk9bk&raw=1">Eventos diarios RC</button>
+                                <span class="info">Eventos diarios RC</span>
+                            </div>
+                            <div class="button-section">
+                                <button class="copy-btn" data-url="https://raw.githubusercontent.com/chukyvaliente/Chuky-Hood/main/Chuky-Hood">Chuky ORIGINAL</button>
+                                <span class="info">Eventos diarios RC</span>
+                            </div>
+                            <div class="button-section">
+                                <button class="copy-btn" data-url="https://www.dropbox.com/scl/fi/rt8ex3v4q2a8bubmlnun0/Chuky.w3u?rlkey=79yk8z3qer3ywobf8olp2b7d6&raw=1">Chuky LaTeta</button>
+                                <span class="info">Eventos diarios RC</span>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <h2>APK</h2>
+                            <div class="button-section">
+                                <button class="copy-btn" id="navigate-btn" data-url="https://www.dropbox.com/s/ccv7shuhtg1nmax/AdrenalinaGol_base.apk?dl=1">AdrenalinaGol</button>
+                                <span class="info">AdrenalinaGol</span>
+                            </div>
+                            <div class="button-section">
+                                <button class="copy-btn" id="navigate-btn" data-url="https://www.dropbox.com/s/lzqmasx8tcodg89/AceStream_MOD_ver3-3.1.48.0-armv7-1.apk?dl=1">AceStream MOD</button>
+                                <span class="info">Acestream MOD</span>
+                            </div>
+                            <div class="button-section">
+                                <button class="copy-btn" id="navigate-btn" data-url="https://www.dropbox.com/s/pg94igr7s3o3x69/AceStreamATVCore-3.1.67.3-armv7_mod.apk?dl=1">AceStream TV MOD</button>
+                                <span class="info">Acestream TV MOD</span>
+                            </div>
+                        </div>
+                    </div>`;
+                } else {
+                    contentDiv.innerHTML = 'Contraseña incorrecta.';
+                }
+
+                let buttons = document.querySelectorAll(".copy-btn");
+                buttons.forEach(function(button) {
+                    button.addEventListener('click', function() {
+                        let url = button.getAttribute("data-url");
+        
+                        // Si el botón tiene el ID 'navigate-btn', navega a la URL
+                        if (button.id === 'navigate-btn') {
+                            window.location.href = url;
+                        } else {
+                            // Copia la URL al portapapeles para los demás botones
+                           copyToClipboard(url);
+                       }
+                    });
+                });
+            }
+
+            getRealContent();
+        });
+    </script>
+</head>
+
+<body>
+    <div id="content"></div>
+</body>
+
+</html>
